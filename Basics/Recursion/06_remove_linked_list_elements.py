@@ -3,8 +3,14 @@ class Node:
         self.val = x
         self.next = None
 
-def removeElment(head: Node, val: int):
+def removeElement(head: Node, val: int) -> Node:
     if not head:
         return head
     
-    
+    newHead = removeElement(head.next, val)
+
+    if head.val == val:
+        return newHead
+    else:
+        head.next = newHead
+        return head

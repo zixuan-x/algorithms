@@ -4,6 +4,7 @@ class ListNode:
         self.val = x
         self.next = None
 
+
 class Solution:
     def sortList(self, head: ListNode) -> ListNode:
         # 1. testing

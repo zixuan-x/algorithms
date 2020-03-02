@@ -1,67 +1,42 @@
-class ListNode:
-    def __init__(self, key, value):
-        self.key = key
-        self.value = value
-        self.next = None
+def topological_sort(vertices, edges):
+    # initialization
+    sortedOrder = []
+    g = {}  # adjacency list
+    visited = set()
 
-class MyHashMap:
+    # build adjacency list
+    for src, des in edges:
+        if src not in g:
+            g[src] = []
+        g[src].append(des)
 
-    def __init__(self):
-        """
-        Initialize your data structure here.
-        """
-        self.arr = [None] * 1000
-        self.size = 1000
-        self.dummy = ListNode(-1, -1)
+        # pick starting points
+    for s in g:
+        if s not in visited:
+            # dfs
+            dfs(s, g, sortedOrder, visited)
 
-    def put(self, key: int, value: int) -> None:
-        """
-        value will always be non-negative.
-        """
-        index = key % self.size
-        self.dummy.next = self.arr[index]
-        pre = self.dummy
-        while pre.next:
-            if pre.next.key == key:
-                pre.next.value = value
-            pre = pre.next
-        
-        pre.next = ListNode(key, value)
-        self.arr[index] = self.dummy.next
+    sortedOrder.reverse()
+    return sortedOrder
 
-    def get(self, key: int) -> int:
-        """
-        Returns the value to which the specified key is mapped, or -1 if this map contains no mapping for the key
-        """
-        index = key % self.size
-        self.dummy.next = self.arr[index]
-        pre = self.dummy
-        while pre.next:
-            if pre.next.key == key:
-                return pre.next.value
-            pre = pre.next
-        return -1
 
-    def remove(self, key: int) -> None:
-        """
-        Removes the mapping of the specified value key if this map contains a mapping for the key
-        """
-        index = key % self.size
-        self.dummy.next = self.arr[index]
-        pre = self.dummy
-        while pre.next:
-            if pre.next.key == key:
-                pre.next = pre.next.next
-                break
-            pre = pre.next
-        self.arr[index] = self.dummy.next
+def dfs(s, g, sortedOrder, visited):
+    # mark current node as visited
+    visited.add(s)
+    # visit neighbors
+    for neighbor in g[s]:
+        if neighbor not in visited:
+            dfs(neighbor, g, sortedOrder, visited)
+    # add current node to sortedOrder
+    sortedOrder.append(s)
 
-hashMap = MyHashMap()
-hashMap.put(1, 1);          
-hashMap.put(2, 2);         
-hashMap.get(1);            
-hashMap.get(3);            
-hashMap.put(2, 1);          
-hashMap.get(2);             
-hashMap.remove(2);         
-hashMap.get(2);            
+def main():
+  print("Topological sort: " +
+        str(topological_sort(4, [[3, 2], [3, 0], [2, 0], [2, 1]])))
+  print("Topological sort: " +
+        str(topological_sort(5, [[4, 2], [4, 3], [2, 0], [2, 1], [3, 1]])))
+  print("Topological sort: " +
+        str(topological_sort(7, [[6, 4], [6, 2], [5, 3], [5, 4], [3, 0], [3, 1], [3, 2], [4, 1]])))
+
+
+main()

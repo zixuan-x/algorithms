@@ -1,3 +1,40 @@
+from collections import defaultdict
+
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        # adjacency list: node -> [nodes]
+        graph = self.buildGraph(numCourses, prerequisites)
+        
+        # 0: unvisited, 1: visiting, 2: visited
+        visited = [0] * numCourses
+        
+        for i in range(numCourses):
+            if self.dfs(graph, i, visited):
+                return False
+            
+        return True
+    
+    def buildGraph(self, numCourses, prerequisites):
+        graph = defaultdict(list)
+        for c1, c2 in prerequisites:
+            graph[c2].append(c1)
+        return graph
+        
+        
+    def dfs(self, graph, i, visited):
+        if visited[i] == 1:
+            return True
+        elif visited[i] == 2:
+            return False
+        else:
+            visited[i] = 1
+            for neighbor in graph[i]:
+                if self.dfs(graph, neighbor, visited):
+                    return True
+            
+            visited[i] = 2
+            return False
+
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
         g = {}

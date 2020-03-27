@@ -1,4 +1,39 @@
-from collections import defaultdict
+from collections import defaultdict, deque
+
+class Solution:
+    def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:
+        sortedOrder = []
+        
+        # adjacency list
+        graph, inDegree = self.buildGraph(numCourses, prerequisites)
+        
+        sources = deque()
+        for key, value in inDegree.items():
+            if value == 0:
+                sources.append(key)
+ 
+        
+        while sources:
+            vertex = sources.popleft()
+            sortedOrder.append(vertex)
+            for child in graph[vertex]:
+                inDegree[child] -= 1
+                if inDegree[child] == 0:
+                    sources.append(child)
+                    
+        return len(sortedOrder) == numCourses
+        
+        
+    def buildGraph(self, numCourses, prerequisites):
+        graph = defaultdict(list)
+        inDegree = {i: 0 for i in range(numCourses)}
+        
+        for u, v in prerequisites:
+            graph[v].append(u)
+            inDegree[u] += 1
+        
+        return graph, inDegree
+   
 
 class Solution:
     def canFinish(self, numCourses: int, prerequisites: List[List[int]]) -> bool:

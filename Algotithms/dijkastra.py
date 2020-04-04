@@ -1,5 +1,7 @@
 from heapq import heappush, heappop
 
+# Dijkstra' Algorithm only works for graphs with non-negative edge weights.
+
 # graph is type {int: list}, start and end are integers. return type : int
 def dijkastra(graph, start, end):
     """Dijkastra (Start to End)"""

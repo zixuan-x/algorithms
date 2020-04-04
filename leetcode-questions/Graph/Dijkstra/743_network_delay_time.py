@@ -1,3 +1,5 @@
+from collections import defaultdict
+
 class Solution:
     def networkDelayTime(self, times: List[List[int]], N: int, K: int) -> int:
         graph = defaultdict(list) # {node:[(node, time)]}

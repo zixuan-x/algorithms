@@ -1,39 +1,30 @@
+from collections import defaultdict, deque
+
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:
+        graph = defaultdict(list)  # {parent: [children]}
+        # graph = {i: [] for i in range(numCourses)}
+        inDegree = {i: 0 for i in range(numCourses)}
         sortedOrder = []
         
-        # adjacency list
-        graph, inDegree = self.buildGraph(numCourses, prerequisites)
+        for child, parent in prerequisites:
+            graph[parent].append(child)
+            inDegree[child] += 1
         
-        # sources
         sources = deque()
-        for key, value in inDegree.items():
-            if value == 0:
+        for key in inDegree:
+            if inDegree[key] == 0:
                 sources.append(key)
         
-        # BFS
         while sources:
-            vertex = sources.popleft()
-            sortedOrder.append(vertex)
-            for child in graph[vertex]:
+            course = sources.popleft()
+            sortedOrder.append(course)
+            for child in graph[course]:
                 inDegree[child] -= 1
                 if inDegree[child] == 0:
                     sources.append(child)
-        
-        if len(sortedOrder) != numCourses:
-            return []
-        return sortedOrder
-        
-    
-    def buildGraph(self, numCourses, prerequisites):
-        graph = defaultdict(list)
-        inDegree = {i: 0 for i in range(numCourses)}
-        
-        for u, v in prerequisites:
-            graph[v].append(u)
-            inDegree[u] += 1
-        
-        return graph, inDegree
+                    
+        return sortedOrder if len(sortedOrder) == numCourses else []
 
 class Solution:
     def findOrder(self, numCourses: int, prerequisites: List[List[int]]) -> List[int]:

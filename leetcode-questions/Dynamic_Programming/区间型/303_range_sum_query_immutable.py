@@ -1,7 +1,6 @@
 class NumArray:
     """
     [3:17] start
-    一边上课一边刷题hhh
     dp(i) -> sum(nums[:i + 1])
     [3:21] solved
     """

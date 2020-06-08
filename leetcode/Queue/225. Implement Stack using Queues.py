@@ -36,7 +36,6 @@ class MyStack:
         """
         self.queue = deque()
         self.temp = deque()
-        
 
     def push(self, x: int) -> None:
         """
@@ -46,7 +45,6 @@ class MyStack:
         while self.queue:
             self.temp.append(self.queue.popleft())
         self.queue, self.temp = self.temp, self.queue
-        
 
     def pop(self) -> int:
         """
@@ -78,14 +76,14 @@ class MyStack:
         """
         self.queue = deque()
         self.temp = deque()
-        
+
 
     def push(self, x: int) -> None:
         """
         Push element x onto stack.
         """
         self.queue.append(x)
-        
+
 
     def pop(self) -> int:
         """
@@ -99,7 +97,7 @@ class MyStack:
         res = self.queue.popleft()
         self.queue, self.temp = self.temp, self.queue
         return res
-        
+
     def top(self) -> int:
         """
         Get the top element.

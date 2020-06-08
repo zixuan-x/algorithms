@@ -3,6 +3,7 @@ package leetcode.Queue;
 import java.util.Queue;
 import java.util.LinkedList;
 
+// 只用一个queue
 class MyStack {
 
     /** offer, poll, peek, isEmpty */
@@ -24,7 +25,7 @@ class MyStack {
     
     /** Removes the element on top of the stack and returns that element. */
     public int pop() {
-        if (this.queue.isEmpty()) {
+        if (empty()) {
             return -1;
         }
         return this.queue.poll();
@@ -32,7 +33,7 @@ class MyStack {
     
     /** Get the top element. */
     public int top() {
-        if (this.queue.isEmpty()) {
+        if (empty()) {
             return -1;
         }
         return this.queue.peek();

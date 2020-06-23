@@ -3,7 +3,7 @@
  <img height=150px src="/logo.png" alt="algorithms"></a>
 </p>
 
-<h3 align="center">Project Title</h3>
+<h3 align="center">algorithms</h3>
 
 <div align="center">
 

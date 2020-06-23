@@ -114,3 +114,7 @@ Add notes about how to use the system.
 - Hat tip to anyone whose code was used
 - Inspiration
 - References
+
+## License
+
+🌱 MIT [@Zixuan-Zhang98](https://github.com/Zixuan-Zhang98) 🌱

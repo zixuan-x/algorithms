@@ -61,39 +61,54 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo.
 
-## 🔧 Running the tests <a name = "tests"></a>
-Explain how to run the automated tests for this system.
-
-### Break down into end to end tests
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-### And coding style tests
-Explain what these tests test and why
-
-```
-Give an example
-```
-
-## 🎈 Usage <a name="usage"></a>
+## 🎈 Table of Contents <a name="usage"></a>
 Add notes about how to use the system.
 
-## 🚀 Deployment <a name = "deployment"></a>
-Add additional notes about how to deploy this on a live system.
+#### Array
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+|624| [Maximum Distance in Arrays](https://leetcode.com/problems/maximum-distance-in-arrays/description/) | [Python3](./array/624.py)| Two Pointers|
+
+### Binary Search
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Linked List
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Queue
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Stack
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Tree
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Graph
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Dynamic Programmng
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+### Parenthesis
+|  #  | Title | Solution | Tag |
+| --- | ----- | -------- | --- |
+
+
 
 ## ⛏️ Built Using <a name = "built_using"></a>
-- [MongoDB](https://www.mongodb.com/) - Database
-- [Express](https://expressjs.com/) - Server Framework
-- [VueJs](https://vuejs.org/) - Web Framework
-- [NodeJs](https://nodejs.org/en/) - Server Environment
+- [Java](https://www.mongodb.com/) - Staic Language
+- [Python3](https://expressjs.com/) - Dynamic Language
 
 ## ✍️ Authors <a name = "authors"></a>
-- [@kylelobo](https://github.com/kylelobo) - Idea & Initial work
-
-See also the list of [contributors](https://github.com/kylelobo/The-Documentation-Compendium/contributors) who participated in this project.
+- [@Zixuan-Zhang98](https://github.com/Zixuan-Zhang98) - all python3 and java solutions
 
 ## 🎉 Acknowledgements <a name = "acknowledgement"></a>
 - Hat tip to anyone whose code was used

@@ -5,6 +5,27 @@ class TreeNode:
         self.left = None
         self.right = None
 
+# preorder == reversed postorder
+class Solution:
+    def flatten(self, root: TreeNode) -> None:
+        """
+        Do not return anything, modify root in-place instead.
+        """
+        self.dfs(root, None)
+        
+
+    def dfs(self, root, tailHead):
+        if not root:
+            return tailHead
+        
+        tailHead = self.dfs(root.right, tailHead)
+        tailHead = self.dfs(root.left, tailHead)
+        
+        root.right = tailHead
+        root.left = None
+        return root
+
+
 class Solution:
     """
     postorder traversal from right to left
@@ -27,22 +48,3 @@ class Solution:
             root.left = None
             prev[0] = root
 
-class Solution:
-    def flatten(self, root: TreeNode) -> None:
-        """
-        Do not return anything, modify root in-place instead.
-        """
-        self.dfs(root, None)
-        
-
-    def dfs(self, root, tailHead):
-        if not root:
-            return tailHead
-        
-        tailHead = self.dfs(root.right, tailHead)
-        tailHead = self.dfs(root.left, tailHead)
-        
-        root.right = tailHead
-        root.left = None
-        tailHead = root
-        return tailHead

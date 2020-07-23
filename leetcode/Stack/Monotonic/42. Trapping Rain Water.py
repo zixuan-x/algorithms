@@ -50,21 +50,22 @@ class Solution:
 class Solution:
     def trap(self, height: List[int]) -> int:
         if not height: return 0
-        
+
         n = len(height)
         left, right = 0, n - 1
         left_max, right_max = height[0], height[n - 1]
-        res = 0
-        
+        result = 0
+
         while left <= right:
             left_max = max(left_max, height[left])
-            right_max = max(right_max, height[right])
+            right_max = max(right_max,height[right])
             
             if left_max < right_max:
-                res += left_max - height[left]
+                result += left_max - height[left]
                 left += 1
             else:
-                res += right_max - height[right]
+                result += right_max - height[right]
                 right -= 1
                 
-        return res
+        return result
+            

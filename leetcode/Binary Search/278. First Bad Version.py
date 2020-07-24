@@ -13,5 +13,7 @@ class Solution:
                 right = mid
             else:
                 left = mid
+                # left = mid + 1 (also works)
+
         if isBadVersion(left): return left
         if isBadVersion(right): return right

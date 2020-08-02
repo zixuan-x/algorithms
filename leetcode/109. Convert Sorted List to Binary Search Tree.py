@@ -10,7 +10,9 @@
 #         self.left = left
 #         self.right = right
 '''
-O(nlogn)
+time complexity: O(nlogn)
+space complexity: O(1)
+    stack: O(logn)
 '''
 class Solution:
     def sortedListToBST(self, head: ListNode) -> TreeNode:
@@ -32,7 +34,9 @@ class Solution:
         
 
 '''
-O(n)
+time complexity: O(n)
+space complexity: O(1)
+    stack: O(logn)
 https://www.jiuzhang.com/solution/convert-sorted-list-to-binary-search-tree/
 '''
 class Solution:
@@ -64,3 +68,36 @@ class Solution:
         root.right = right_root
         
         return root, next
+
+'''
+time complexity: O(2n) = O(n)
+space complexity: O(n)
+    stack: O(logn)
+'''
+class Solution:
+    def sortedListToBST(self, head: ListNode) -> TreeNode:
+        array = self.linkedListToArray(head)
+        return self.sortedArrayToBST(array, 0, len(array) - 1)
+        
+    
+    def sortedArrayToBST(self, array, left, right):
+        if left > right:
+            return None
+        if left == right:
+            return TreeNode(array[left])
+        
+        mid = (left + right) // 2
+        node = TreeNode(array[mid])
+        node.left = self.sortedArrayToBST(array, left, mid - 1)
+        node.right = self.sortedArrayToBST(array, mid + 1, right)
+        return node
+    
+    
+    def linkedListToArray(self, head):
+        array = []
+        cur = head
+        while cur:
+            array.append(cur.val)
+            cur = cur.next
+        return array
+        

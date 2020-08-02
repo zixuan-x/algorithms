@@ -20,3 +20,16 @@ def Mario(mission):
     return max(dp)
 
 print(Mario(mission))
+
+
+def condense(head):
+    if not head:
+        return head
+    values = set()
+    while head:
+        values.add(head.val)
+        if head.next:
+            if head.next.val in values:
+                head.next = head.next.next
+        head = head.next
+    return head

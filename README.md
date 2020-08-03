@@ -1,6 +1,3 @@
-# This document is still in progress! Will be ready soon!
-
-
 <p align="center">
   <a href="" rel="noopener">
  <img height=150px src="/logo.png" alt="algorithms"></a>

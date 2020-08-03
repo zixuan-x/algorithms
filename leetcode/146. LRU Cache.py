@@ -1,3 +1,78 @@
+'''
+1. 
+'''
+class Node:
+    def __init__(self, key, val, left=None, right=None):
+        self.key = key
+        self.val = val
+        self.left = left
+        self.right = right
+
+class LRUCache:
+
+    def __init__(self, capacity: int):
+        self.capacity = capacity
+        
+        self.head = Node(-1, -1)
+        self.head.left = self.head
+        self.head.right = self.head
+        
+        self.dic = {}  # {key: ListNode}
+
+    def get(self, key: int) -> int:
+        if key in self.dic:
+            node = self.dic[key]
+            self.moveToHead(node)
+            return node.val
+        else:
+            return -1
+        
+    def put(self, key: int, value: int) -> None:
+        if key in self.dic:
+            node = self.dic[key]
+            node.val = value
+            self.moveToHead(node)
+        else:
+            node = Node(key, value)
+            self.dic[key] = node
+            self.moveToHead(node)
+            if self.size() > self.capacity:
+                node_to_remove = self.head.left
+                key_to_remove = node_to_remove.key
+                self.removeNode(node_to_remove)
+                self.removeKey(key_to_remove)
+    
+    def size(self) -> int:
+        return len(self.dic)
+    
+    def moveToHead(self, node):
+        if node.left and node.right:
+            self.removeNode(node)
+
+        node.left = self.head
+        node.right = self.head.right
+
+        node.left.right = node
+        node.right.left = node
+    
+    def removeNode(self, node):
+        node.left.right = node.right
+        node.right.left = node.left
+        
+    def removeKey(self, key):
+        self.dic.pop(key)
+        
+        
+
+
+# Your LRUCache object will be instantiated and called as such:
+# obj = LRUCache(capacity)
+# param_1 = obj.get(key)
+# obj.put(key,value)
+
+'''
+2. 
+'''
 class Node:
     def __init__(self, k, v):
         self.key = k

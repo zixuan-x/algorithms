@@ -61,7 +61,7 @@ until finished
 
 End with an example of getting some data out of the system or using it for a little demo. -->
 
-## 🎈 LeetCode Questions by number <a name="usage"></a>
+## 🎈 LeetCode Questions List <a name="usage"></a>
 <!-- Add notes about how to use the system. -->
 | #    | Title | Solution | Difficulty |
 | ---- | ----- | -------- | ---------- |

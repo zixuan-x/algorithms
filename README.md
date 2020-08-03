@@ -8,18 +8,18 @@
 
 <h3 align="center">algorithms</h3>
 
-<div align="center">
+<!-- <div align="center">
 
   [![Status](https://img.shields.io/badge/status-active-success.svg)]() 
   [![GitHub Issues](https://img.shields.io/github/issues/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/issues)
   [![GitHub Pull Requests](https://img.shields.io/github/issues-pr/kylelobo/The-Documentation-Compendium.svg)](https://github.com/kylelobo/The-Documentation-Compendium/pulls)
   [![License](https://img.shields.io/badge/license-MIT-blue.svg)](/LICENSE)
 
-</div>
+</div> -->
 
 ---
 
-<p align="center"> Few lines describing your project.
+<!-- <p align="center"> Few lines describing your project.
     <br> 
 </p>
 
@@ -62,10 +62,27 @@ And repeat
 until finished
 ```
 
-End with an example of getting some data out of the system or using it for a little demo.
+End with an example of getting some data out of the system or using it for a little demo. -->
 
 ## 🎈 Table of Contents <a name="usage"></a>
-Add notes about how to use the system.
+<!-- Add notes about how to use the system. -->
+
+| #    | Title | Solution | Acceptance | Difficulty |
+| ---- | ----- | -------- | ---------- | ---------- |
+| 1    |       | [Python](./leecode/\1. Two Sum.py) |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+|      |       |          |            |            |
+
+
+
+
+
 
 #### Array
 |  #  | Title | Solution | Tag |

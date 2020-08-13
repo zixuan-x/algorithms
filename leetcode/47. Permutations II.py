@@ -1,7 +1,10 @@
 class Solution:
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
-        permutations = []
+        if not nums:
+            return []
+
         nums.sort()
+        permutations = []
         used = [False] * len(nums)
         self.search(nums, used, [], permutations)
         return permutations

@@ -1,20 +1,4 @@
 class Solution:
-    def permute(self, nums: List[int]) -> List[List[int]]:
-        permutations = []
-        self.search(nums, 0, permutations)
-        return permutations
-    
-    def search(self, nums, start, permutations):
-        if start == len(nums) - 1: # if all previous elements are determiend, then the last one is determined
-            permutations.append(nums[:])
-            return
-        
-        for i in range(start, len(nums)):
-            nums[start], nums[i] = nums[i], nums[start]
-            self.search(nums, start + 1, permutations)
-            nums[start], nums[i] = nums[i], nums[start]
-
-class Solution:
     """
     @param nums: A list of Integers.
     @return: A list of permutations.
@@ -52,3 +36,24 @@ class Solution:
             self.dfs(nums, used, current, results)
             used[i] = 0
             current.pop()
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        if not nums:
+            return []
+        
+        permutations = []
+        self.search(nums, 0, permutations)
+        return permutations
+    
+    def search(self, nums, start, permutations):
+        if start == len(nums) - 1: # if all previous elements are determiend, then the last one is determined
+            permutations.append(nums[:])
+            return
+        
+        for i in range(start, len(nums)):
+            nums[start], nums[i] = nums[i], nums[start]
+            self.search(nums, start + 1, permutations)
+            nums[start], nums[i] = nums[i], nums[start]
+
+

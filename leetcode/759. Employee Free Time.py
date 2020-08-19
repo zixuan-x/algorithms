@@ -7,6 +7,23 @@ class Interval:
         self.end = end
 
 '''
+sort all:
+time: O(nlogn)
+space:
+'''
+class Solution:
+    def employeeFreeTime(self, schedule: '[[Interval]]') -> '[Interval]':
+        intervals = sorted([interval for employee in schedule for interval in employee], key=lambda x: x.start)
+        freeTimes, merged = [], intervals[0].end
+        for interval in intervals:
+            if interval.start <= merged:
+                merged = max(merged, interval.end)
+            else:
+                freeTimes.append(Interval(merged, interval.start))
+                merged = interval.end
+        return freeTimes
+
+'''
 Time Complexity: O(N * logK)
 Space Complexity: O(K)
 '''

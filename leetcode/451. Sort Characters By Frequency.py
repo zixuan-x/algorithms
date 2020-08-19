@@ -20,7 +20,8 @@ class Solution:
         
         result = []
         for times in range(len(s), 0, -1):
-            result += frequencies[times]
+            if times in frequencies:
+                result += frequencies[times]
         return ''.join(result)
 
 '''

@@ -6,21 +6,18 @@
 class Solution:
     def mergeKLists(self, lists: List[ListNode]) -> ListNode:
         minHeap = []
-        # push the first node of all lists into minHeap
-        index = 0
         for i in range(len(lists)):
             l = lists[i]
             if l:
-                heappush(minHeap, (l.val, index, l))
-                index += 1
+                heappush(minHeap, (l.val, i, l.next))
         
         dummy = ListNode(-1)
-        pre = dummy
+        prev = dummy
         while minHeap:
-            _, _, l = heappop(minHeap)
-            pre.next = l
-            pre = pre.next
-            if l.next:
-                heappush(minHeap, (l.next.val, index, l.next))
-                index += 1
+            val, i, l = heappop(minHeap)
+            prev.next = ListNode(val)
+            prev = prev.next
+            if l:
+                heappush(minHeap, (l.val, i, l.next))
+        
         return dummy.next

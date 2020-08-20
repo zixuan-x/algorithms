@@ -1,11 +1,11 @@
 from collections import deque
 
+"""
+1. DFS - O(m * n)
+Note: 数组元素是string，不是int
+"""
 class Solution:
-    """
-    1. DFS - O(n ^ 2)
-    Note: 数组元素是string，不是int
-    """
-    def numIslands1(self, grid: List[List[str]]) -> int:
+    def numIslands(self, grid: List[List[str]]) -> int:
         if not grid or not grid[0]: return 0
         
         m, n = len(grid), len(grid[0])
@@ -27,11 +27,12 @@ class Solution:
         self.dfs(grid, i - 1, j)
         self.dfs(grid, i, j + 1)
         self.dfs(grid, i, j - 1)
-    
-    """
-    2. BFS - O(n ^ 2)
-    """
-    def numIslands2(self, grid: List[List[str]]) -> int:
+
+"""
+2. BFS - O(m * n)
+"""
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
         if not grid or not grid[0]: return 0
         
         m, n = len(grid), len(grid[0])
@@ -58,6 +59,54 @@ class Solution:
                     queue.append((x + dx, y + dy))
 
 
-    """
-    3. Union Find - O(n ^ 2)
-    """
+"""
+3. Union Find - O(m * n)
+"""
+class Solution:
+    def numIslands(self, grid: List[List[str]]) -> int:
+        if not grid or not grid[0]:
+            return 0
+        m, n = len(grid), len(grid[0])
+        parents = list(range(m * n))
+        ranks = [1] * (m * n)
+        
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == '0':
+                    continue
+                index = i * n + j
+                if j < n - 1 and grid[i][j + 1] == '1':
+                    self.union(parents, ranks, index, index + 1)
+                if i < m - 1 and grid[i + 1][j] == '1':
+                    self.union(parents, ranks, index, index + n)
+        
+        roots = set()
+        for i in range(m):
+            for j in range(n):
+                if grid[i][j] == '0':
+                    continue
+                index = i * n + j
+                roots.add(self.find(parents, index))
+        return len(roots)
+        
+    
+    def find(self, parents, u):
+        if u != parents[u]:
+            parents[u] = self.find(parents, parents[u])
+        return parents[u]
+        
+        
+    def union(self, parents, ranks, u, v):
+        ru, rv = self.find(parents, u), self.find(parents, v)
+        if ru == rv:
+            return False
+        
+        if ranks[ru] < ranks[rv]:
+            parents[ru] = rv
+        elif ranks[ru] > ranks[rv]:
+            parents[rv] = ru
+        else:
+            parents[ru] = rv
+            ranks[rv] += 1
+            
+        return True

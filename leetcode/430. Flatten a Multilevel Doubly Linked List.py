@@ -7,27 +7,38 @@ class Node:
         self.next = next
         self.child = child
 """
+
 class Solution:
     def flatten(self, head: 'Node') -> 'Node':
-        temp = head
-        while temp:
-            if temp.child:
-                insertHead = self.flatten(temp.child)
-                temp.child = None
-                
-                if temp.next:
-                    insertTail = insertHead
-                    while insertTail and insertTail.next:
-                        insertTail = insertTail.next
-                    # linking
-                    next = temp.next
-                    temp.next = insertHead
-                    insertHead.prev = temp
-                    insertTail.next = next
-                    next.prev = insertTail
-                    
-                else:
-                    temp.next = insertHead
-                    insertHead.prev = temp
-            temp = temp.next
+        if not head:
+            return head
+        
+        self.flattenHelper(head)
         return head
+    
+    def flattenHelper(self, head) -> ('Node', 'Node'):
+        if not head:
+            return head
+        
+        cur, prev = head, None
+        while cur:
+            if cur.child:
+                # store before flatten the list
+                childHead = cur.child
+                next = cur.next
+                # flatten
+                childTail = self.flattenHelper(cur.child)
+                # connect
+                cur.child = None
+                cur.next = childHead
+                childHead.prev = cur
+                childTail.next = next
+                if next:
+                    next.prev = childTail
+                prev = childTail
+                cur = next
+            else:
+                prev = cur
+                cur = cur.next
+        return prev
+

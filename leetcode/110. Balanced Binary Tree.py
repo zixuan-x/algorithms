@@ -7,7 +7,25 @@ class TreeNode:
 
 # https://leetcode.com/problems/balanced-binary-tree/discuss/35691/The-bottom-up-O(N)-solution-would-be-better
 
-''' 1. O(n ^ 2) '''
+''' 1. O(n) with -1 as return value '''
+class Solution:
+    def isBalanced(self, root: TreeNode) -> bool:
+        return self.depth(root) != -1
+        
+    def depth(self, root):
+        if not root:
+            return 0
+        
+        left = self.depth(root.left)
+        if left == -1: return -1
+        right = self.depth(root.right)
+        if right == -1: return -1
+        
+        if abs(left - right) > 1: return -1
+        return max(left, right) + 1
+
+
+''' 2. O(n ^ 2) '''
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         if not root:
@@ -22,7 +40,7 @@ class Solution:
         return max(self.depth(root.left), self.depth(root.right)) + 1
 
 
-''' 2. O(n) with Global Variable'''
+''' 3. O(n) with Global Variable'''
 class Solution:
     def isBalanced(self, root: TreeNode) -> bool:
         if not root:
@@ -41,28 +59,5 @@ class Solution:
         
         if abs(left - right) > 1:
             res[0] = False
-        
-        return max(left, right) + 1
-
-''' 3. O(n) with -1 as return value '''
-class Solution:
-    def isBalanced(self, root: TreeNode) -> bool:
-        if not root:
-            return True
-        
-        return self.depth(root) != -1
-        
-    def depth(self, root):
-        if not root:
-            return 0
-        
-        left = self.depth(root.left)
-        right = self.depth(root.right)
-        
-        if left == -1 or right == -1:
-            return -1
-        
-        if abs(left - right) > 1:
-            return -1
         
         return max(left, right) + 1

@@ -21,3 +21,15 @@ class Solution:
         counter = Counter(s[i:i + minSize] for i in range(len(s) - minSize + 1))
         # O(n * minSize + n)
         return max([counter[sub] for sub in counter if len(set(sub)) <= maxLetters] + [0])
+
+class Solution:
+    def maxFreq(self, s: str, maxLetters: int, minSize: int, maxSize: int) -> int:
+        counter = defaultdict(int)
+        for i in range(len(s) - minSize + 1):
+            sub = s[i:i + minSize]
+            counter[sub] += 1
+        result = 0
+        for sub in counter:
+            if len(set(sub)) <= maxLetters:
+                result = max(result, counter[sub])
+        return result

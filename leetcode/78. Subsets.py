@@ -1,17 +1,24 @@
-''' 1.  '''
+''' 1. 
+        []
+     /   |.  \
+     1.  2.   3
+    / \  |
+    2. 3 3
+    |
+    3
+'''
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        results = []
-        self.search(nums, 0, [], results)
-        return results
+        result = []
+        self.search(nums, 0, [], result)
+        return result
         
-        
-    def search(self, nums, start, path, results):
-        results.append(path[:])
+    def search(self, nums, start, path, result):
+        result.append(path[:])
         
         for i in range(start, len(nums)):
             path.append(nums[i])
-            self.search(nums, i + 1, path, results)
+            self.search(nums, i + 1, path, result)
             path.pop()
 
 ''' 2.  '''

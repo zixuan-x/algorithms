@@ -1,4 +1,33 @@
 '''
+recursion:
+'''
+class Solution:
+    def decodeString(self, s: str) -> str:
+        if not s:
+            return s
+        self.index = 0
+        return self.decode(s)
+    
+    def decode(self, s):
+        number = 0
+        word = ''
+        while self.index < len(s):
+            c = s[self.index]
+            if c.isdigit():
+                number = number * 10 + int(c)
+            elif c.isalpha():
+                word += c
+            elif c == '[':
+                self.index += 1
+                word += number * self.decode(s)
+                number = 0
+            else: # c == ']'
+                return word
+            self.index += 1
+        return word
+                
+
+'''
 two stack:
 time: O(n) where n is the result string
 space: O(n)

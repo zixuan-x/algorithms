@@ -3,11 +3,9 @@ class Solution:
         stack = []
         for i in range(len(s)):
             c = s[i]
-            if c.isalpha():
-                continue
-            elif c == '(':
+            if c == '(':
                 stack.append(i)
-            else:
+            elif c == ')':
                 if stack and s[stack[-1]] == '(':
                     stack.pop()
                 else:

@@ -25,7 +25,7 @@ for -> s:
     2. left = i, right = i + 1
 time: O(n ^ 2)
 '''
-class Solution:
+class Solution2:
     def longestPalindrome(self, s: str) -> str:
         result = ''
         for i in range(len(s)):
@@ -39,7 +39,7 @@ class Solution:
         return result
             
     def find(self, s, l, r):
-        length = 0
+        # length = 0
         while l >= 0 and r < len(s) and s[l] == s[r]:
             l -= 1
             r += 1

@@ -1,15 +1,22 @@
-''' 1. Recursive '''
+# Recursive
+from typing import List
+
+from templates.common_data_structures.tree_node import TreeNode
+
+
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
-        if not root: return []
+        if not root:
+            return []
         return self.postorderTraversal(root.left) + self.postorderTraversal(root.right) + [root.val]
 
-''' 2. Iterative with Stack '''
+
+# Iterative with Stack
 class Solution:
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         res = []
         stack = []
-        
+
         cur = root
         while stack or cur:
             if cur:
@@ -19,5 +26,5 @@ class Solution:
             else:
                 cur = stack.pop()
                 cur = cur.left
-        
+
         return res[::-1]
